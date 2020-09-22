@@ -1,6 +1,7 @@
 package my.repo.sainsburys.helper;
 
 import my.repo.sainsburys.model.BerryPageElement;
+import my.repo.sainsburys.service.BerryExtractor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class JsoupBerryExtractorTest {
 
-    private AbstractBerryExtractorTemplate sut;
+    private BerryExtractor sut;
     private Path testDir;
 
     @BeforeEach

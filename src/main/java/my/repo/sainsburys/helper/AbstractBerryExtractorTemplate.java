@@ -2,9 +2,10 @@ package my.repo.sainsburys.helper;
 
 import lombok.RequiredArgsConstructor;
 import my.repo.sainsburys.model.BerryPageElement;
+import my.repo.sainsburys.service.scraper.BerryExtractor;
 
 @RequiredArgsConstructor
-abstract class AbstractBerryExtractorTemplate {
+abstract class AbstractBerryExtractorTemplate implements BerryExtractor {
     
     protected final String fragment;
     
