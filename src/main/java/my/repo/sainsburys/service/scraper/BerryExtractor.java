@@ -1,4 +1,4 @@
-package my.repo.sainsburys.service;
+package my.repo.sainsburys.service.scraper;
 
 import my.repo.sainsburys.model.BerryPageElement;
 

@@ -1,10 +1,13 @@
 package my.repo.sainsburys.helper;
 
+import org.apache.commons.math3.util.Precision;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class JsoupBerryExtractor extends AbstractBerryExtractorTemplate {
 
@@ -45,7 +48,10 @@ public class JsoupBerryExtractor extends AbstractBerryExtractorTemplate {
     protected int retrieveUnitPrice() {
         Element pricePerUnit = doc.selectFirst(PRICE_PER_UNIT_QUERY);
         
-        return Integer.parseInt(stripCurrencyAndDot(pricePerUnit.ownText()));
+        return stripCurrency()
+                .andThen( Double::parseDouble )
+                .andThen( scaleUp2Digit() )
+                .apply( pricePerUnit.ownText() );
     }
 
     @Override
@@ -63,7 +69,11 @@ public class JsoupBerryExtractor extends AbstractBerryExtractorTemplate {
         return input.replaceAll("[a-zA-Z]*", "");
     }
 
-    private String stripCurrencyAndDot(String input) {
-        return input.replaceAll("[£.]*", "");
+    private UnaryOperator<String> stripCurrency() {
+        return (String input) -> input.replaceAll("[£$€]*", "");
+    }
+    
+    private Function<Double,Integer> scaleUp2Digit() {
+        return (Double price) ->  (int) Precision.round(price  * 100, 3);
     }
 }

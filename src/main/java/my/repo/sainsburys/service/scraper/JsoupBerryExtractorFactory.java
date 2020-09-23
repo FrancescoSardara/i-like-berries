@@ -1,6 +1,8 @@
-package my.repo.sainsburys.service;
+package my.repo.sainsburys.service.scraper;
 
 import my.repo.sainsburys.helper.JsoupBerryExtractor;
+import my.repo.sainsburys.service.scraper.BerryExtractor;
+import my.repo.sainsburys.service.scraper.BerryExtractorFactory;
 import org.springframework.stereotype.Component;
 
 @Component

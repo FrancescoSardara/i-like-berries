@@ -1,7 +1,7 @@
 package my.repo.sainsburys.helper;
 
 import my.repo.sainsburys.model.BerryPageElement;
-import my.repo.sainsburys.service.BerryExtractor;
+import my.repo.sainsburys.service.scraper.BerryExtractor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

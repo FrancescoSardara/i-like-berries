@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 public class BerryPage {
     
-    private List<BerryPageElement> results;
+    private final List<BerryPageElement> results;
     
-    private PageTotal total;
+    private final PageTotal total;
 }
