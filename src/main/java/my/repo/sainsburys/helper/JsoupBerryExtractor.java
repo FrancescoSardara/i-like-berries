@@ -74,6 +74,6 @@ public class JsoupBerryExtractor extends AbstractBerryExtractorTemplate {
     }
     
     private Function<Double,Integer> scaleUp2Digit() {
-        return (Double price) ->  (int) Precision.round(price  * 100, 3);
+        return (Double price) ->  (int) Precision.round(price  * 100, 2);
     }
 }

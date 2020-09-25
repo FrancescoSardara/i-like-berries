@@ -53,7 +53,7 @@ class SimpleBerryScraperIntegrationTest {
     }
 
     @Test
-    @DisplayName("Pages that doesn't follow  Sainsbury test structure are not included ")
+    @DisplayName("Pages that don't follow Sainsbury test structure are not included")
     void withWrongLinks() {
         // arrange
 
