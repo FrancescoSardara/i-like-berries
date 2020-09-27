@@ -3,9 +3,13 @@ plugins {
     id 'application'
     id "io.freefair.lombok" version "5.2.1"
     id "com.adarshr.test-logger" version "2.0.0"
+    id "com.bmuschko.docker-java-application" version "6.6.1"
     id "org.springframework.boot" version "2.3.4.RELEASE"
     id "io.spring.dependency-management" version "1.0.10.RELEASE"
 }
+
+import com.bmuschko.gradle.docker.tasks.container.*
+import com.bmuschko.gradle.docker.tasks.image.*
 
 group 'my.repo'
 version '1.0-SNAPSHOT'
@@ -44,4 +48,18 @@ testlogger {
 wrapper {
     gradleVersion "6.6.1"
     distributionType Wrapper.DistributionType.ALL
+}
+
+task copyDockerfile(type: Copy) {
+    
+    dependsOn dockerCreateDockerfile
+    
+    from file("./docker")
+    into file("$buildDir/docker")
+}
+
+dockerBuildImage {
+    
+    dependsOn copyDockerfile
+    images = ["sainsberrys-scraper:latest"]
 }
